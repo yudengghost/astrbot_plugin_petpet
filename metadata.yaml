@@ -1,6 +1,6 @@
-name: petpet # 这是你的插件的唯一识别名。
-desc: 根据指令发送meme表情包的插件。 # 插件简短描述
-help: 。 # 插件的帮助信息
+name: public_servant # 这是你的插件的唯一识别名。
+desc: 获取公务员考试相关新闻资料 (?🧐)。 # 插件简短描述
+help: /考公 help 指令查看 # 插件的帮助信息
 version: v1.0 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: yudengghost # 作者
-repo: https://github.com/yudengghost/astrbot_plugin_petpet # 插件的仓库地址
+repo: https://github.com/yudengghost/astrbot_plugin_public_servant # 插件的仓库地址

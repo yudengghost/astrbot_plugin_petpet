@@ -7,6 +7,7 @@ import aiohttp
 import os
 import random
 from astrbot.core.utils.t2i.network_strategy import NetworkRenderStrategy
+import ssl
 
 @register("helloworld", "Your Name", "一个简单的 Hello World 插件", "1.0.0", "repo url")
 class MyPlugin(Star):
@@ -84,7 +85,12 @@ class MyPlugin(Star):
     async def sixty_seconds(self, event: AstrMessageEvent):
         """获取每日60秒读懂世界要闻"""
         try:
-            async with aiohttp.ClientSession() as session:
+            # 创建 SSL 上下文
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
+            async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
                 async with session.get("https://api.03c3.cn/api/zb") as resp:
                     if resp.status != 200:
                         yield event.plain_result("获取60秒读懂世界失败，请稍后再试")
